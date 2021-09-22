@@ -1,0 +1,64 @@
+body {
+    background-color:#FDFAF6;
+}
+
+/* To set navigation bar fixed at top using sticky */
+
+
+.carousel-item {
+    max-height: 60vh;
+} 
+
+.container-fluid {
+    padding: 0;
+}
+
+.section2-info a, .login a {
+    background-color: #2f5d62;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.section3-category a {
+    text-decoration: none;
+    color: white;  
+}
+
+.section3-category a:hover{
+    opacity: 0.8; 
+} 
+
+.card-title {
+    font-size: 36px;
+}
+
+
+
+  /* footer img {
+      width: 15px;
+  } */
+
+/* .login {
+    background-color: #FDFAF6;
+    opacity: 0.8;
+    /* background-attachment: fixed;
+    background-size: cover;
+    height: 80vh; 
+}  */
+
+
+@media screen and (max-width: 570px) {
+
+  
+
+    .section3-category img {
+        max-width: 90vw;
+    } 
+
+}
+
