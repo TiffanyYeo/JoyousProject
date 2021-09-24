@@ -1,19 +1,19 @@
-package org.generation.WebProject.controller.dto;
+package org.generation.JoyousTeamProject.controller.dto;
 
 public class ItemDTO {
 
     private String name;
     private String description;
-    private String imageUrl;
-    private String style;
+    private String imageURL;
+    private String category;
     private double price;
 
-    public ItemDTO(String name, String description, String imageUrl, String style, double price)
+    public ItemDTO(String name, String description, String imageURL, String category, double price)
     {
         this.name = name;
         this.description = description;
-        this.imageUrl = imageUrl;
-        this.style = style;
+        this.imageURL = imageURL;
+        this.category = category;
         this.price = price;
     }
 
@@ -25,13 +25,13 @@ public class ItemDTO {
 
     public void setDescription( String description) { this.description = description;}
 
-    public String getImageUrl() {return imageUrl;}
+    public String getImageUrl() {return imageURL;}
 
-    public void setImageUrl(String imageUrl) {this.imageUrl = imageUrl;}
+    public void setImageUrl(String imageUrl) {this.imageURL = imageURL;}
 
-    public void setStyle(String style) {this.style = style;}
+    public void setStyle(String style) {this.category = style;}
 
-    public String getStyle() { return style;}
+    public String getStyle() { return category;}
 
     public void setPrice(double price) {this.price = price;}
 
