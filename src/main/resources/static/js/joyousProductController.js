@@ -1,5 +1,5 @@
 //Crete a ProductController Class
-//Attribute : items object array with items of: name, description, imageURL, style, price
+//Attribute : items object array with items of: name, description, imageURL, category, price
 
 class joyousProductController {
 
@@ -10,10 +10,10 @@ class joyousProductController {
     //Create addItem method to add the product item to the _items object 
     //current method is used on Front-end coding. subsequently will be done at back-end instead
 
-    addItem(productIdValue, name, description, imageURL, category, price) {
+    addItem(id, name, description, imageURL, category, price) {
 
         const item = {          //item object created to hold properties & values 
-            productId: productIdValue,
+            id: id,
             name: name,        //passes thru addItem method
             description: description,
             imageURL: imageURL,
@@ -109,20 +109,7 @@ const createHTMLCard = (item) => `
         </div>
     </div>
 `;
-/*
-<div  class="col-lg-4">
-            <div class="card" style="max-width: 18rem;">
-            <img src="${item.imageURL}" class="card-img-top"
-                alt="image">
-            <div class="card-body">
-                <h5 class="card-title">${item.name}</h5>
-                <p class="card-text">${item.description}</p>
-                <p class="card-text">${item.category}</p>                
-                <button id="${item.productId}" class="btn btn-accent" type="button" data-toggle="modal" data-target="#productModal">See Details</button>   
-            </div>
-        </div>
-    </div>
-*/
+
 function displayProductDetail(item)
 {
 console.log("display product details");
