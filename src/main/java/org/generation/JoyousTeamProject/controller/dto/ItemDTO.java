@@ -25,13 +25,13 @@ public class ItemDTO {
 
     public void setDescription( String description) { this.description = description;}
 
-    public String getImageUrl() {return imageURL;}
+    public String getImageURL() {return imageURL;}
 
-    public void setImageUrl(String imageUrl) {this.imageURL = imageURL;}
+    public void setImageURL(String imageURL) {this.imageURL = imageURL;}
 
-    public void setStyle(String style) {this.category = style;}
+    public void setCategory(String category) {this.category = category;}
 
-    public String getStyle() { return category;}
+    public String getCategory() { return category;}
 
     public void setPrice(double price) {this.price = price;}
 
