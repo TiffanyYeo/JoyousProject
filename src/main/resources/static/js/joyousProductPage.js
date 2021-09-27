@@ -6,8 +6,10 @@
 const product = new joyousProductController();
 //product _items currently is empty
 
-
+function loadData()
+{
 //Start adding products into product_items
+/*
 product.addItem(1, "Dream of my Li", "A collection of rose..", "images/Floral Arrangement/Birth01.jpg", "Birthday", "$180");
 product.addItem(2, "Beauty in a Box", "A collection of rose..", "images/Floral Arrangement/Birth02.jpg", "Birthday", "$180");
 product.addItem(3, "Path of Joys", "Walking in the Shade of", "images/Floral Arrangement/Birth03.jpg", "Birthday", "$180");
@@ -28,8 +30,10 @@ product.addItem(15,"Heavenly Hope", "A collection of rose..", "images/Floral Arr
 product.addItem(16,"Heavenly Hope", "A collection of rose..", "images/Floral Arrangement/Congrat04.jpg", "Congratulatory", "$150");
 product.addItem(17,"Heavenly Hope", "A collection of rose..", "images/Floral Arrangement/Congrat05.jpg", "Congratulatory", "$150");
 product.addItem(18,"Heavenly Hope", "A collection of rose..", "images/Floral Arrangement/Congrat07.jpg", "Congratulatory", "$150");
-
+*/
 product.displayItem();
+}
+loadData();
 
 // On Select Filter Dropdown
 const select = document.querySelector("#selectCategory");
