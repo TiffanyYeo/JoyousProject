@@ -2,7 +2,7 @@ package org.generation.JoyousTeamProject.controller;
 
 import org.generation.JoyousTeamProject.component.FileUploadUtil;
 import org.generation.JoyousTeamProject.controller.dto.ItemDTO;
-import org.generation.JoyousTeamProject.repository.entity.Item;
+import org.generation.JoyousTeamProject.repository.entity.Productlist;
 import org.generation.JoyousTeamProject.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.util.StringUtils;

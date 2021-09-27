@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Item {
+public class Productlist {     //class name must be same as schema name
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,9 @@ public class Item {
     private String category;
     private double price;
 
-    public Item() {}
+    public Productlist() {}
 
-    public Item( ItemDTO itemDto ) {
+    public Productlist( ItemDTO itemDto ) {
 
         this.name = itemDto.getName();
         this.description = itemDto.getDescription();
@@ -57,7 +57,8 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", imageURL='" + imageURL + '\'' + ", category='" + category + '\'' + ", price='" + price + '}';
+        return "Productlist{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", " +
+                "imageURL='" + imageURL + '\'' + ", category='" + category + '\'' + ", price='" + price + '}';
     }
 
 }
