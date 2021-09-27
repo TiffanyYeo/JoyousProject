@@ -43,7 +43,7 @@ public class Item {
 
     public void setDescription( String description ) { this.description = description; }
 
-    public String getImageURL() { return "/productImages/" + imageURL; }
+    public String getImageURL() { return "/src/main/resources/static/images/FloralArrangement/" + imageURL; }
 
     public void setImageURL( String imageURL ) { this.imageURL = imageURL; }
 
