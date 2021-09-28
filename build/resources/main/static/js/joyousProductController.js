@@ -55,7 +55,7 @@ class joyousProductController {
     }
 */
     //Display the product items on the webpage
-   /* displayItem(filterValue) {
+    filterItem(filterValue) {
 
         console.log(filterValue);
         console.log(typeof(filterValue));
@@ -70,9 +70,11 @@ class joyousProductController {
             const categoryListFiltered = this._items.filter(e => e.category == filterValue);
 
             tempArray = categoryListFiltered;
+            console.log(tempArray);
         }
-
-        //console.log(this._items);
+        }
+/*
+       //console.log(this._items);
 
         //Display the information on the card
         //1) For loop to loop thru the _items (currently hold 18 items in it)
@@ -210,13 +212,13 @@ const createHTMLCard = (index, name, description, category, imageURL) =>
     </div>
 `;
 
-function displayProductDetail(name, category, description, imageURL, price)
+function displayProductDetail(item)
 {
 console.log("display product details");
-document.getElementById("modalName").innerText = name;
-document.getElementById("modalCategory").innerText = category;
-document.getElementById("modalDescription").innerText = description;
-document.getElementById("modalImg").src = imageURL;
-document.getElementById("modalPrice").innerText = price;
+document.getElementById("modalName").innerText = item.name;
+document.getElementById("modalCategory").innerText = item.category;
+document.getElementById("modalDescription").innerText = item.description;
+document.getElementById("modalImg").src = item.imageURL;
+document.getElementById("modalPrice").innerText = item.price;
 
 }
