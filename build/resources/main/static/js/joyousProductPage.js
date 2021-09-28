@@ -40,5 +40,5 @@ const select = document.querySelector("#selectCategory");
 select.addEventListener("change", function() { 
     const selectValue = select.value;
 
-    product.displayItem(selectValue);
+    product.filterItem(selectValue);
 });

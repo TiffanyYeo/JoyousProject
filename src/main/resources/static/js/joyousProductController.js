@@ -1,6 +1,8 @@
 //Crete a ProductController Class
 //Attribute : items object array with items of: name, description, imageURL, category, price
 
+let tempArray;
+
 class joyousProductController {
 
     constructor() {         // at the start is an empty constructor
@@ -55,12 +57,11 @@ class joyousProductController {
     }
 */
     //Display the product items on the webpage
-   /* displayItem(filterValue) {
+    filterItem(filterValue) {
 
         console.log(filterValue);
         console.log(typeof(filterValue));
 
-        let tempArray;
 
         if(typeof(filterValue) == 'undefined' || filterValue == "All") {
             //console.log("filter value is undefined");
@@ -70,9 +71,11 @@ class joyousProductController {
             const categoryListFiltered = this._items.filter(e => e.category == filterValue);
 
             tempArray = categoryListFiltered;
+            console.log(tempArray);
         }
-
-        //console.log(this._items);
+        }
+/*
+       //console.log(this._items);
 
         //Display the information on the card
         //1) For loop to loop thru the _items (currently hold 18 items in it)
@@ -157,8 +160,14 @@ class joyousProductController {
 
     //displayItem()
     renderProductPage()     //To display item on Page
-    {
+    {   //pass in a parameter to renderproductpage
+        // if parameter = 1, then for-loop use this._items to display
+        // if-else statement
+        //if parameter = 2, then use the tempArray in the for-loop, tempArray.length
+        //set #row to '' to reset
         var productHTMLList = [];
+
+        document.querySelector('#row').innerHTML = '';
 
         for (var i=0; i<this._items.length; i++)
         {
@@ -210,13 +219,13 @@ const createHTMLCard = (index, name, description, category, imageURL) =>
     </div>
 `;
 
-function displayProductDetail(name, category, description, imageURL, price)
+function displayProductDetail(item)
 {
 console.log("display product details");
-document.getElementById("modalName").innerText = name;
-document.getElementById("modalCategory").innerText = category;
-document.getElementById("modalDescription").innerText = description;
-document.getElementById("modalImg").src = imageURL;
-document.getElementById("modalPrice").innerText = price;
+document.getElementById("modalName").innerText = item.name;
+document.getElementById("modalCategory").innerText = item.category;
+document.getElementById("modalDescription").innerText = item.description;
+document.getElementById("modalImg").src = item.imageURL;
+document.getElementById("modalPrice").innerText = item.price;
 
 }
