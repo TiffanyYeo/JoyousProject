@@ -164,7 +164,7 @@ class joyousProductController {
         {
             const item = this._items[i];            //assign the individual item to the variable
 
-            const productHTML = createHTMLList(i, item.name, item.description, item.imageURL);
+            const productHTML = createHTMLCard(i, item.name, item.description, item.imageURL);
 
             productHTMLList.push(productHTML);
         }

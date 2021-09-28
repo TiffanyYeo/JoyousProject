@@ -58,6 +58,7 @@ function clearForm() {
     const name = document.querySelector("#name").value = "";
     const price = document.querySelector("#price").value = "";
     const description = document.querySelector("#description").value = "";
+    const price = document.querySelector("#price").value = "";
     const imageURL = document.querySelector("#imageURL").value = "";
     imgPreview.style.display = "none";
     
