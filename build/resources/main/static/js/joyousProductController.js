@@ -1,5 +1,5 @@
 //Crete a ProductController Class
-//Attribute : items object array with items of: name, description, imageURL, style, price
+//Attribute : items object array with items of: name, description, imageURL, category, price
 
 class joyousProductController {
 
@@ -10,10 +10,39 @@ class joyousProductController {
     //Create addItem method to add the product item to the _items object 
     //current method is used on Front-end coding. subsequently will be done at back-end instead
 
-    addItem(productIdValue, name, description, imageURL, category, price) {
+    addItem(id, name, description, category, price, imageURL)
+    {
+            //POST HTTP Method
+            var productController = this;
 
-        const item = {          //item object created to hold properties & values 
-            productId: productIdValue,
+            const formData = new FormData();
+            // key/value pair, e.g. key 'name' is the form field n need to match with the @RequestParam from the
+            //PostMapping in your ItemController.java class.
+            //value is the parameter that is passed from the productForm.js (e.g. New T-Shirt)
+            formData.append('name', name);      // append - add a field
+            formData.append('description', description);
+            formData.append('category', category);
+            formData.append('price', price);
+            formData.append('imageURL', imageURL);
+            formData.append('imagefile', imageObject);
+
+            fetch('http://localhost:8080/productlist/add', {
+          // fetch('https://tywebproject.herokuapp.com/item/add', {
+                 method: 'POST',
+                 body: formData
+                 })
+                 .then(response => response.json())
+                 .then(data => {
+                     console.log('Success:', data);
+                     alert("Successfully added to Product")
+                 })
+                 .catch((error) => {
+                     console.error('Error:', error);
+                     alert("Error adding item to Product")
+                 });
+    }
+     /*   const item = {          //item object created to hold properties & values
+            id: id,
             name: name,        //passes thru addItem method
             description: description,
             imageURL: imageURL,
@@ -24,9 +53,9 @@ class joyousProductController {
         this._items.push(item);     //item object values are pushed into _items
     
     }
-
+*/
     //Display the product items on the webpage
-    displayItem(filterValue) {
+   /* displayItem(filterValue) {
 
         console.log(filterValue);
         console.log(typeof(filterValue));
@@ -90,8 +119,75 @@ class joyousProductController {
             // a event function, displayProductDetail,  is created to do the display
         }
     }// End of displayItem method
+*/
+
+ displayItem()   //To fetch the data
+    {
+        var productController = this;
+        productController._items = [];
+
+        //fetch data from database using the REST API endpoint from Spring Boot
+        fetch('http://127.0.0.1:8080/productlist/all')     //calling the getMapping
+        //fetch('https://tywebproject.herokuapp.com/item/all')
+            .then((resp) => resp.json())
+            .then(function(data) {
+                console.log("2. receive data")
+                console.log(data);
+                data.forEach(function (item, index) {
+
+                    const itemObj = {       //convert json file to Js object
+                        id: item.id,
+                        name: item.name,
+                        description: item.description,
+                        imageURL: item.imageURL,
+                        category: item.category,
+                        price: item.price
+                   };
+                    productController._items.push(itemObj);     //push the itemObj into
+
+              });
+
+              productController.renderProductPage();    //calling the renderProductPage to display
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    //displayItem()
+    renderProductPage()     //To display item on Page
+    {
+        var productHTMLList = [];
+
+        for (var i=0; i<this._items.length; i++)
+        {
+            const item = this._items[i];            //assign the individual item to the variable
+
+            const productHTML = createHTMLCard(i, item.name, item.description, item.imageURL);
+
+            productHTMLList.push(productHTML);
+        }
+
+        //Join all the elements/items in my productHTMLList array into one string, and seperate by a break
+        const pHTML = productHTMLList.join('\n');
+        document.querySelector('#row').innerHTML = pHTML;
+
+
+        //addEventListener - click
+        for (var i=0; i<this._items.length; i++)
+        {
+            const item = this._items[i];
+            document.getElementById(i).addEventListener("click", function() { displayProductDetails(item);} );
+        }
+    }
 
 } //End of ProductController Class 
+
+
+
+
+
 
 //2) Call a function to create the HTML elements for the card display
 //A ` backpick arrow function is used to return the whole HTML element with values that is passed in throgh the parameter
@@ -109,20 +205,7 @@ const createHTMLCard = (item) => `
         </div>
     </div>
 `;
-/*
-<div  class="col-lg-4">
-            <div class="card" style="max-width: 18rem;">
-            <img src="${item.imageURL}" class="card-img-top"
-                alt="image">
-            <div class="card-body">
-                <h5 class="card-title">${item.name}</h5>
-                <p class="card-text">${item.description}</p>
-                <p class="card-text">${item.category}</p>                
-                <button id="${item.productId}" class="btn btn-accent" type="button" data-toggle="modal" data-target="#productModal">See Details</button>   
-            </div>
-        </div>
-    </div>
-*/
+
 function displayProductDetail(item)
 {
 console.log("display product details");

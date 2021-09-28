@@ -16,7 +16,7 @@ public class ItemServiceMySQL implements ItemService {
     }
 
     @Override
-    public Item save(Item item) {
+    public Productlist save(Productlist item) {
         return this.itemRepository.save(item);
     }
 
@@ -26,16 +26,16 @@ public class ItemServiceMySQL implements ItemService {
     }
 
     @Override
-    public List<Item> all() {
-        List<Item> result = new ArrayList<>();
+    public List<Productlist> all() {
+        List<Productlist> result = new ArrayList<>();
         this.itemRepository.findAll().forEach(result::add);
         return result;
     }
 
     @Override
-    public Item findById(int itemId) {
-        Optional<Item> item = this.itemRepository.findById(itemId);
-        Item itemResponse = item.get();
+    public Productlist findById(int itemId) {
+        Optional<Productlist> item = this.itemRepository.findById(itemId);
+        Productlist itemResponse = item.get();
         return itemResponse;
     }
 

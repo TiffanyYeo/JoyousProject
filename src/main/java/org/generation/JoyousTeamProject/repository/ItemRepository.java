@@ -3,7 +3,7 @@ package org.generation.JoyousTeamProject.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.generation.JoyousTeamProject.repository.entity.*;
 
-public interface ItemRepository extends CrudRepository<Item, Integer> {
+public interface ItemRepository extends CrudRepository<Productlist, Integer> {
 
 }
 

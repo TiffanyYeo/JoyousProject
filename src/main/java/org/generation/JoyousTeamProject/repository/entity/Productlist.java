@@ -43,7 +43,7 @@ public class Productlist {     //class name must be same as schema name
 
     public void setDescription( String description ) { this.description = description; }
 
-    public String getImageURL() { return "/src/main/resources/static/images/FloralArrangement/" + imageURL; }
+    public String getImageURL() { return "/productImages/" + imageURL; }
 
     public void setImageURL( String imageURL ) { this.imageURL = imageURL; }
 

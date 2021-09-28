@@ -4,6 +4,7 @@ import org.generation.JoyousTeamProject.component.FileUploadUtil;
 import org.generation.JoyousTeamProject.controller.dto.ItemDTO;
 import org.generation.JoyousTeamProject.repository.entity.Productlist;
 import org.generation.JoyousTeamProject.service.*;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -32,13 +33,13 @@ public class ItemController {
     @GetMapping("/all") // a naming "/all" is given
     //GetMapping is the route that correspond to the HTTP GET method calls from the client.
 
-    public Iterable<Item> getItems() {
+    public Iterable<Productlist> getItems() {
         return itemService.all();   //calling a method all() in the service package - ItemService interface
     }
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public Item findItemById(@PathVariable Integer id) {
+    public Productlist findItemById(@PathVariable Integer id) {
         return itemService.findById(id);
     }
 
@@ -51,7 +52,7 @@ public class ItemController {
     @CrossOrigin
     @PostMapping("/add")
     //@RequestParam method to pass the information received from the clients
-    public Item save(@RequestParam(name = "name", required = true) String name,
+    public Productlist save(@RequestParam(name = "name", required = true) String name,
                      @RequestParam(name = "description", required = true) String description,
                      @RequestParam(name = "imageURL", required = true) String imageURL,
                      //imageUrl is the image name, not the actual image file/object
@@ -66,7 +67,7 @@ public class ItemController {
         FileUploadUtil.saveFile(imageFolder, fileName, multipartFile);
 
         ItemDTO itemDto = new ItemDTO(name, description, imageURL, category, price);
-        return itemService.save(new Item(itemDto));
+        return itemService.save(new Productlist(itemDto));
     }
 
 

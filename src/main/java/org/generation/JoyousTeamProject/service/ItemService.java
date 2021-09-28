@@ -5,12 +5,12 @@ import java.util.*;
 
 public interface ItemService {
 
-    Item save(Item item);
+    Productlist save(Productlist item);
 
     void delete(int itemID);
 
-    List<Item> all();
+    List<Productlist> all();
 
-    Item findById(int itemId);
+    Productlist findById(int itemId);
 
 }
