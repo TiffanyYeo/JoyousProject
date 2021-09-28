@@ -164,7 +164,8 @@ class joyousProductController {
         {
             const item = this._items[i];            //assign the individual item to the variable
 
-            const productHTML = createHTMLCard(i, item.name, item.description, item.imageURL);
+            const productHTML = createHTMLCard(i, item.name, item.description, item
+            .category, item.imageURL);
 
             productHTMLList.push(productHTML);
         }
@@ -178,7 +179,8 @@ class joyousProductController {
         for (var i=0; i<this._items.length; i++)
         {
             const item = this._items[i];
-            document.getElementById(i).addEventListener("click", function() { displayProductDetails(item);} );
+            document.getElementById(i).addEventListener("click", function() {
+            displayProductDetail(item);} );
         }
     }
 
@@ -191,28 +193,30 @@ class joyousProductController {
 
 //2) Call a function to create the HTML elements for the card display
 //A ` backpick arrow function is used to return the whole HTML element with values that is passed in throgh the parameter
-const createHTMLCard = (item) => `        
+const createHTMLCard = (index, name, description, category, imageURL) =>
+`
             <div  class="col-sm-4">
             <div class="card">
-            <img src="${item.imageURL}" class="card-img-top"
+            <img src=${imageURL} class="card-img-top"
                 alt="image">
             <div class="card-body">
-                <h5 class="card-title">${item.name}</h5>
-                <p class="card-text">${item.description}</p>
-                <p class="card-text">${item.category}</p>                
-                <button id="${item.productId}" class="btn btn-accent" type="button" data-toggle="modal" data-target="#productModal">See Details</button>   
+                <h5 class="card-title">${name}</h5>
+                <p class="card-text">${description}</p>
+                <p class="card-text">${category}</p>
+                <button id="${index}" class="btn btn-accent" type="button"
+                data-toggle="modal" data-target="#productModal">See Details</button>
             </div>
         </div>
     </div>
 `;
 
-function displayProductDetail(item)
+function displayProductDetail(name, category, description, imageURL, price)
 {
 console.log("display product details");
-document.getElementById("modalName").innerText = item.name;
-document.getElementById("modalCategory").innerText = item.category;
-document.getElementById("modalDescription").innerText = item.description;
-document.getElementById("modalImg").src = item.imageURL;
-document.getElementById("modalPrice").innerText = item.price;
+document.getElementById("modalName").innerText = name;
+document.getElementById("modalCategory").innerText = category;
+document.getElementById("modalDescription").innerText = description;
+document.getElementById("modalImg").src = imageURL;
+document.getElementById("modalPrice").innerText = price;
 
 }
