@@ -18,8 +18,5 @@ const select = document.querySelector("#selectCategory");
 
 select.addEventListener("change", function () {
     const selectValue = select.value;
-    // const selectedCategory = 1;
-    product.filterItem(selectValue);
-   
-  
+    product.filterItem(selectValue); 
 });
