@@ -84,6 +84,3 @@ input.addEventListener('change', () => {
     getImgData();    //this sends the image to the product controller above
     //productsControl
 });
-
-
-
