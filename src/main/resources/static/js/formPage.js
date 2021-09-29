@@ -1,6 +1,12 @@
+//Create an instance object of ProductsController
 const productsControl = new joyousProductController();
-var storeImage = ""
+let storeImage = ""; //this will store the image object that is uploaded and passed to
+//product controller
+let isSelected = false; // set for drop down validity check
+let selectOption = document.querySelector("#category"); // drop down variable
+const imgPreview = document.getElementById("img-preview"); // image file preview
 
+//When user clicks on 'Save Item', calls API to add items to the database
 //Add an 'onsubmit' event listener for productform to add a product
 newItemForm.addEventListener('submit', (event) => {
     // Prevent default action
@@ -12,13 +18,7 @@ newItemForm.addEventListener('submit', (event) => {
     const newItemCategory = document.querySelector('#category');
     const newItemPrice = document.querySelector('#price');
 
-    let isSelected = false; // set for drop down validity check
-    let selectOption = document.querySelector("#category"); // drop down variable
-    const chooseFile = document.getElementById("imageURL"); // image file source
-    const imgPreview = document.getElementById("img-preview"); // image file preview
-
-    // Do the Validation code here
-    // Drop down selection check
+    //Drop down selection check validation
     if (!isSelected) {
         document.querySelector("#category").setCustomValidity("Please select at least ONE catergory");
         document.querySelector("#category").reportValidity();
@@ -28,65 +28,62 @@ newItemForm.addEventListener('submit', (event) => {
         addToList(name, category, price, description, imageURL);
     }
 
-    // display image preview
-    function getImgData() {
-        const files = chooseFile.files[0];
-        if (files) {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(files);
-        fileReader.addEventListener("load", function () {
-            imgPreview.style.display = "block";
-            imgPreview.innerHTML = '<img src="' + this.result + '" />';
-            });    
+    // add eventlistener for drop down check
+    selectOption.addEventListener("change", function() {
+        if (selectOption.value == "Select Category") {
+            isSelected = false;
         }
-    } // end of image preview
+
+        else {
+            selectOption.setCustomValidity("");
+            selectOption.reportValidity();
+            isSelected = true;
+        }
+    });
 
     // Get the values of the inputs - variable names to be same as MySQL columns
     const name = newItemNameInput.value;
     const description = newItemDescription.value;
-    const imageUrl = "FloralArrangement/" + newItemImageURL.value.replace("C:\\fakepath\\", "");
+    const imageURL = "FloralArrangement/" + newItemImageURL.value.replace("C:\\fakepath\\", "");
+    // /images/T-shirt.jpg
     const category = newItemCategory.value;
     const price = newItemPrice.value;
-    
 
     // Clear the form
     newItemNameInput.value = '';
     newItemDescription.value = '';
-    newItemImageUrl.value = '';
-    newItemStyle.value = '';
+    newItemImageURL.value = '';
+    newItemCategory.selectedIndex = 0;
     newItemPrice.value = '';
     imgPreview.style.display = "none";
 
-     // Set drop down menu to Index 0
-     document.querySelector("#category").selectedIndex = 0;
-
     // Add the task to the task manager
-    productsControl.addItem(name, description, imageUrl, style, price, storeImage);
+    productsControl.addItem(name, description, imageURL, category, price, storeImage);
 
 });
 
 // select file input
 const input = document.querySelector('#imageURL');
 
+// display image preview
+function getImgData() {
+    storeImage = input.files[0];
+    if (files) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(files);
+        fileReader.addEventListener("load", function () {
+        imgPreview.style.display = "block";
+        imgPreview.innerHTML = '<img src="' + this.result + '" />';
+        });
+    }
+}
+
 // add event listener
 input.addEventListener('change', () => {
-    storeImage = input.files[0];
-})
+    //File object representing the file(s) selected by the user
+    getImgData();    //this sends the image to the product controller above
+    //productsControl
+});
 
-// add eventlistener for image select
-chooseFile.addEventListener("change", function () {
-    getImgData();
-}) // end of eventlistener for image select
 
-// add eventlistener for drop down check
-selectOption.addEventListener("change", function() {
-    if (selectOption.value == "Select Category") {
-        isSelected = false;
-    }
 
-    else {
-        selectOption.setCustomValidity("");
-        selectOption.reportValidity();
-        isSelected = true;
-    }
-}); // end of eventlistener for drop down check
