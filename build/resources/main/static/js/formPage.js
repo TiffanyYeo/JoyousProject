@@ -1,7 +1,9 @@
 //Create an instance object of ProductsController
 const productsControl = new joyousProductController();
-let storeImage = ""; //this will store the image object that is uploaded and passed to
-//product controller
+
+//this will store the image object that is uploaded and passed to product controller
+let storeImage = "";
+
 let isSelected = false; // set for drop down validity check
 let selectOption = document.querySelector("#category"); // drop down variable
 const imgPreview = document.getElementById("img-preview"); // image file preview
@@ -25,27 +27,24 @@ newItemForm.addEventListener('submit', (event) => {
     }
     else {
         console.log("Form is submitted");
+        // Get the values of the inputs - variable names to be same as MySQL columns
+       const name = newItemNameInput.value;
+       const description = newItemDescription.value;
+       const imageURL = "FloralArrangement/" + newItemImageURL.value.replace("C:\\fakepath\\", "");
+       // /images/T-shirt.jpg
+       const category = newItemCategory.value;
+       const price = newItemPrice.value;
 
-       // addToList(name, category, price, description, imageURL);
-
-       // Get the values of the inputs - variable names to be same as MySQL columns
-           const name = newItemNameInput.value;
-           const description = newItemDescription.value;
-           const imageURL = "FloralArrangement/" + newItemImageURL.value.replace("C:\\fakepath\\", "");
-           // /images/T-shirt.jpg
-           const category = newItemCategory.value;
-           const price = newItemPrice.value;
-
-           // Add the task to the task manager
-                   productsControl.addItem(name, description, imageURL, category, price, storeImage);
+       // Add the task to the task manager
+       productsControl.addItem(name, description, imageURL, category, price, storeImage);
 
        // Clear the form
-           newItemNameInput.value = '';
-           newItemDescription.value = '';
-           newItemImageURL.value = '';
-           newItemCategory.selectedIndex = 0;
-           newItemPrice.value = '';
-           imgPreview.style.display = "none";
+       newItemNameInput.value = '';
+       newItemDescription.value = '';
+       newItemImageURL.value = '';
+       newItemCategory.selectedIndex = 0;
+       newItemPrice.value = '';
+       imgPreview.style.display = "none";
     }
 })
 
@@ -73,14 +72,13 @@ input.addEventListener('change', () => {
 })
 
 // add eventlistener for drop down check
-    selectOption.addEventListener("change", function() {
-        if (selectOption.value == "Select Category") {
-            isSelected = false;
-        }
-
-        else {
-            selectOption.setCustomValidity("");
-            selectOption.reportValidity();
-            isSelected = true;
-        }
-    });
+selectOption.addEventListener("change", function() {
+    if (selectOption.value == "Select Category") {
+        isSelected = false;
+    }
+    else {
+        selectOption.setCustomValidity("");
+        selectOption.reportValidity();
+        isSelected = true;
+    }
+});
