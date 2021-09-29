@@ -1,17 +1,17 @@
 #teamCont {
-    background-image: url(../images/banner_faded.jpg);
+    background-image: url(../images/logo_1.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: rgb(230, 245, 230);
+    background-image: linear-gradient(to bottom, rgb(255, 255, 228), rgb(230, 245, 230));
 }
 
 @media screen and (max-width: 576px) {
 
     #teamCont {
         background-image: none;
-        background-color: rgb(230, 245, 230);
+        background-image: linear-gradient(to bottom, rgb(255, 255, 228), rgb(230, 245, 230));
     }
     
 }
