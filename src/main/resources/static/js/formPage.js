@@ -1,18 +1,23 @@
-const formList = []; // store all the values into the Object Array
-let isSelected = false; // set for drop down validity check
-let selectOption = document.querySelector("#category"); // drop down variable
-const chooseFile = document.getElementById("imageURL"); // image file source
-const imgPreview = document.getElementById("img-preview"); // image file preview
+const productsControl = new joyousProductController();
+var storeImage = ""
 
-// Create form object
-function addForm() {
-    console.log("in the function");
-    const name = document.querySelector("#name").value;
-    const category = document.querySelector("#category").value;
-    const price = document.querySelector("#price").value;
-    const description = document.querySelector("#description").value;
-    const imageURL = document.querySelector("#imageURL").value
+//Add an 'onsubmit' event listener for productform to add a product
+newItemForm.addEventListener('submit', (event) => {
+    // Prevent default action
+    event.preventDefault();
+    // Select the inputs
+    const newItemNameInput = document.querySelector('#name');
+    const newItemDescription = document.querySelector('#description');
+    const newItemImageURL = document.querySelector('#imageURL');
+    const newItemCategory = document.querySelector('#category');
+    const newItemPrice = document.querySelector('#price');
 
+    let isSelected = false; // set for drop down validity check
+    let selectOption = document.querySelector("#category"); // drop down variable
+    const chooseFile = document.getElementById("imageURL"); // image file source
+    const imgPreview = document.getElementById("img-preview"); // image file preview
+
+    // Do the Validation code here
     // Drop down selection check
     if (!isSelected) {
         document.querySelector("#category").setCustomValidity("Please select at least ONE catergory");
@@ -22,49 +27,51 @@ function addForm() {
         console.log("Form is submitted");
         addToList(name, category, price, description, imageURL);
     }
-} // end of addForm
 
-function addToList(name, category, price, description, imageURL) {
-    // Adding the list of item into formList object
-    const item = {
-        name: name,
-        category: category,
-        price: price,
-        description: description,
-        imageURL: imageURL
-    } 
+    // display image preview
+    function getImgData() {
+        const files = chooseFile.files[0];
+        if (files) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(files);
+        fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '<img src="' + this.result + '" />';
+            });    
+        }
+    } // end of image preview
 
-    // push item to formList
-    formList.push(item);
-    clearForm();
-    console.log(`Total Submission: ${formList.length}:`, formList);
-} // end of addToList
-
-// display image preview
-function getImgData() {
-    const files = chooseFile.files[0];
-    if (files) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(files);
-      fileReader.addEventListener("load", function () {
-        imgPreview.style.display = "block";
-        imgPreview.innerHTML = '<img src="' + this.result + '" />';
-      });    
-    }
-} // end of image preview
-
-// Clear the form after submission
-function clearForm() {
-    const name = document.querySelector("#name").value = "";
-    const price = document.querySelector("#price").value = "";
-    const description = document.querySelector("#description").value = "";
-    const price = document.querySelector("#price").value = "";
-    const imageURL = document.querySelector("#imageURL").value = "";
-    imgPreview.style.display = "none";
+    // Get the values of the inputs - variable names to be same as MySQL columns
+    const name = newItemNameInput.value;
+    const description = newItemDescription.value;
+    const imageUrl = "FloralArrangement/" + newItemImageURL.value.replace("C:\\fakepath\\", "");
+    const category = newItemCategory.value;
+    const price = newItemPrice.value;
     
-    // Set drop down menu to Index 0
-    document.querySelector("#category").selectedIndex = 0;
-} // end of clear form
+
+    // Clear the form
+    newItemNameInput.value = '';
+    newItemDescription.value = '';
+    newItemImageUrl.value = '';
+    newItemStyle.value = '';
+    newItemPrice.value = '';
+    imgPreview.style.display = "none";
+
+     // Set drop down menu to Index 0
+     document.querySelector("#category").selectedIndex = 0;
+
+    // Add the task to the task manager
+    productsControl.addItem(name, description, imageUrl, style, price, storeImage);
+
+});
+
+// select file input
+const input = document.querySelector('#imageURL');
+
+// add event listener
+input.addEventListener('change', () => {
+    storeImage = input.files[0];
+})
 
 // add eventlistener for image select
 chooseFile.addEventListener("change", function () {

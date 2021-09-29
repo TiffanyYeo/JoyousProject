@@ -216,18 +216,11 @@ class joyousProductController {
                     displayProductDetail(item);
                 });
             }
-        }
-
-        
+        }  
     }
-
-
 }
 
-
-
 //End of ProductController Class 
-
 
 //2) Call a function to create the HTML elements for the card display
 //A ` backpick arrow function is used to return the whole HTML element with values that is passed in throgh the parameter
