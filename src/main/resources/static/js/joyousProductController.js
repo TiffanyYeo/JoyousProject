@@ -12,7 +12,7 @@ class joyousProductController {
     //Create addItem method to add the product item to the _items object 
     //current method is used on Front-end coding. subsequently will be done at back-end instead
 
-    addItem(id, name, description, category, price, imageURL) {
+    addItem(name, description, imageURL, category, price, storeImage) {
         //POST HTTP Method
         var productController = this;
 
@@ -22,10 +22,10 @@ class joyousProductController {
         //value is the parameter that is passed from the productForm.js (e.g. New T-Shirt)
         formData.append('name', name);      // append - add a field
         formData.append('description', description);
+        formData.append('imageURL', imageURL);
         formData.append('category', category);
         formData.append('price', price);
-        formData.append('imageURL', imageURL);
-        formData.append('imagefile', imageObject);
+        formData.append('imagefile', storeImage);
 
         fetch('http://localhost:8080/productlist/add', {
             // fetch('https://tywebproject.herokuapp.com/item/add', {
