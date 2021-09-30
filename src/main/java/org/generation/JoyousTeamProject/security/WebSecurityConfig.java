@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        //not using the HTTP sercurity default login page
+        //not using the HTTP security default login page
         http.formLogin().loginPage("/admin");
 
         //if user successfully login, URL will be directed to the productForm.html
