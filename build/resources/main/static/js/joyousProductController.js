@@ -27,8 +27,8 @@ class joyousProductController {
         formData.append('price', price);
         formData.append('imagefile', storeImage);
 
-        fetch('http://localhost:8080/productlist/add', {
-            // fetch('https://tywebproject.herokuapp.com/item/add', {
+//        fetch('http://localhost:8080/productlist/add', {
+            fetch('https://joyousteamproject.herokuapp.com/productlist/add', {
             method: 'POST',
             body: formData
         })
@@ -129,8 +129,8 @@ class joyousProductController {
         productController._items = [];
 
         //fetch data from database using the REST API endpoint from Spring Boot
-        fetch('http://127.0.0.1:8080/productlist/all')     //calling the getMapping
-            //fetch('https://tywebproject.herokuapp.com/item/all')
+        //fetch('http://127.0.0.1:8080/productlist/all')     //calling the getMapping
+            fetch('https://joyousteamproject.herokuapp.com/productlist/all')
             .then((resp) => resp.json())
             .then(function (data) {
                 console.log("2. receive data")
