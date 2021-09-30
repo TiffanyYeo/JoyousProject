@@ -62,19 +62,7 @@ body
     margin-bottom: 15px;
 
 }
-/*
-.card-body
-{
-    width: 100%;
-    height: auto;
-}
 
-.card img
-{
-    max-width: 100%;
-    height: auto;
-} 
-*/
 #modalName
 {
     font-weight: 500;
@@ -84,12 +72,12 @@ body
 
 .modal-body
 {
-    width: 75%;
+    width: 100%;
 }
  
 .modal-content
 {
-    width: 75%
+    width: 100%
 }
 
 @media screen and (max-width: 570px){
