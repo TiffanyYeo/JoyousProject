@@ -54,18 +54,19 @@
             <div class="form-row">
               <div class="col-lg-6 p-1">
                 <label for="description">Description:</label><br />
-                <textarea type="description" id="description" name="description" rows="5" cols="40" placeholder="Product Description Here" required></textarea>
+                <textarea type="description" id="description" class="form-control" name="description" rows="3"
+                          placeholder="Product Description Here" required></textarea>
                 <span id="descriptionErr"></span>
               </div>
             </div>
 
             <div class="form-row">
-              <div class="col-lg-5 p-1">
+              <div class="col-lg-6 p-1">
                 <label for="imageURL">Upload Picture:</label>
                 <input type="file" accept="image/*" id="imageURL" name="imageURL" required>
               </div>
 
-              <div class="col-lg-5 p-1">
+              <div class="col-lg-6 p-1">
                 <button type="submit" value="Submit">Submit Product</button>
               </div>
             </div>
