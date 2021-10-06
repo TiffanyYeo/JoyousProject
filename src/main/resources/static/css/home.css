@@ -1,9 +1,6 @@
 body {
-    background-color:#FDFAF6;
+    background-color:#FFFAFA;
 }
-
-/* To set navigation bar fixed at top using sticky */
-
 
 .carousel-item {
     max-height: 60vh;
@@ -34,31 +31,18 @@ body {
 } 
 
 .card-title {
-    font-size: 36px;
+    font-size: 2vw;
 }
-
-
-
-  /* footer img {
-      width: 15px;
-  } */
-
-/* .login {
-    background-color: #FDFAF6;
-    opacity: 0.8;
-    /* background-attachment: fixed;
-    background-size: cover;
-    height: 80vh; 
-}  */
-
 
 @media screen and (max-width: 570px) {
 
-  
-
     .section3-category img {
         max-width: 90vw;
-    } 
+    }
+
+    .card-title {
+        font-size: 26px;
+    }
 
 }
 
