@@ -73,7 +73,7 @@ input.addEventListener('change', () => {
 
 // add eventlistener for drop down check
 selectOption.addEventListener("change", function() {
-    if (selectOption.value == "Select Category") {
+    if (selectOption.value == "select") {
         isSelected = false;
     }
     else {
